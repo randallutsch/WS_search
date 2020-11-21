@@ -33,7 +33,7 @@ function buttonClick(){
     var tbWordSize = document.getElementById("tbWordSize");
 
     arrWords.forEach(element => {
-        if(element.length - 1 == tbWordSize.value)
+        if(element.length - 2 == tbWordSize.value)
             if(wordCanBeMade(element, tbLetters.value))
                 resultsDiv.innerHTML += element+'\n';
     });
