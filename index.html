@@ -8,7 +8,8 @@
         body {
             margin: 0;
         }
-        #grid-container {
+@media (min-width: 500px){
+    #grid-container {
             display: grid;
             grid-template: 
                 "header header header"
@@ -18,6 +19,26 @@
             width: 100vw;
             height: 90vh;
         }
+}
+        
+@media (max-width: 500px) {
+    #grid-container {
+        display: grid;
+        grid-template:
+            "header header"
+            "letters letters"
+            "count count"
+            "button button"
+            "results results"
+        ;
+        grid-template-rows: 50px 30px 30px 50px 1fr;
+        height: 90vh;
+        width: 100vw;
+
+    }
+}
+
+        
 
         #grid-header {
             grid-area: header;
@@ -29,12 +50,15 @@
         #letter-input {
             grid-area: letters;
             padding-left: 20px;
+            padding-top: 5px;
         }
         #number-input {
+            padding-top: 5px;
             grid-area: count;
         }
         #button-submit {
             grid-area: button;
+            padding-top: 5px;
         }
         #results-div {
             grid-area: results;
@@ -46,6 +70,17 @@
             height: 100%; 
             width: 90%; 
             resize: none;
+        }
+        .button {
+            background-color: navy;
+            border: none;
+            color: white;
+            width: 90%;
+            height: 90%;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -61,7 +96,7 @@
             <input type="number" id="tbWordSize" name="tbWordSize" min=3 max=7>
         </div>
         <div id="button-submit">
-            <input type="submit" id="btnSubmit" name="btnSubmit">
+            <button id="btnSubmit" name="btnSubmit" class="button">Search</button>
         </div>
         <div id="results-div">
             <textarea id="results"></textarea>
