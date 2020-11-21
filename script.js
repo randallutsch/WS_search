@@ -1,15 +1,13 @@
 (function(){
-    var tbLetters = document.getElementById("tbLetters");
     var tbWordSize = document.getElementById("tbWordSize");
     var btnSubmit = document.getElementById("btnSubmit");
-    var resultsDiv = document.getElementById("results");
 
     tbWordSize.value = 3;
 
     var strWords = loadWords();
-    window.arrWords = strWords.split(" ");
+    window.arrWords = strWords.split("\n");
 
-    btnSubmit.onclick = buttonClick();
+    btnSubmit.onclick = buttonClick;
     
 })();
 
@@ -27,5 +25,29 @@ function loadWords(){
 }
 
 function buttonClick(){
-    
+    var arrWords = window.arrWords;
+
+    var resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = "";
+    var tbLetters = document.getElementById("tbLetters");
+    var tbWordSize = document.getElementById("tbWordSize");
+
+    arrWords.forEach(element => {
+        if(element.length - 1 == tbWordSize.value)
+            if(wordCanBeMade(element, tbLetters.value))
+                resultsDiv.innerHTML += element+'\n';
+    });
+
+    tbLetters.focus();
+    tbLetters.select();
+}
+
+function wordCanBeMade(word, letters){
+    var wordcopy = word.replace('\r','').toUpperCase();
+    letters.toUpperCase().split('').forEach(element => {
+        wordcopy = wordcopy.replace(element,"");
+    });
+    if (wordcopy == "")
+        return true;
+    return false;
 }

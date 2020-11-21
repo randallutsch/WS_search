@@ -4,14 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WS Search</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        #grid-container {
+            display: grid;
+            grid-template: 
+                "header header header"
+                "letters count button"
+                "results results results";
+            grid-template-rows: 50px 50px 1fr;  
+            width: 100vw;
+            height: 90vh;
+        }
+
+        #grid-header {
+            grid-area: header;
+            background-color: black;
+            color: white;
+            padding-left: 20px;
+        }
+
+        #letter-input {
+            grid-area: letters;
+            padding-left: 20px;
+        }
+        #number-input {
+            grid-area: count;
+        }
+        #button-submit {
+            grid-area: button;
+        }
+        #results-div {
+            grid-area: results;
+        }
+        #results{
+            border-style: none; 
+            border-color: Transparent; 
+            overflow: auto;    
+            height: 100%; 
+            width: 90%; 
+            resize: none;
+        }
+    </style>
 </head>
 <body>
-    <label for="tbLetters">Letters:</label>
-    <input type="text" id="tbLetters" name="tbLetters"><br>
-    <label for="tbWordSize">Word Size:</label>
-    <input type="number" id="tbWordSize" name="tbWordSize" min=3 max=7><br>
-    <input type="submit" id="btnSubmit" name="btnSubmit">
-    <div id="results"></div>
+    <div id="grid-container">
+        <div id="grid-header"><h3>WS Search</h3></div>
+        <div id="letter-input">
+            <label for="tbLetters">Letters:</label>
+            <input type="text" id="tbLetters" name="tbLetters">
+        </div>
+        <div id="number-input">
+            <label for="tbWordSize">Word Size:</label>
+            <input type="number" id="tbWordSize" name="tbWordSize" min=3 max=7>
+        </div>
+        <div id="button-submit">
+            <input type="submit" id="btnSubmit" name="btnSubmit">
+        </div>
+        <div id="results-div">
+            <textarea id="results"></textarea>
+        </div>
+    </div>
+    
+    
     
     <script src="./script.js"></script>
 </body>
