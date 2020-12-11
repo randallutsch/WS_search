@@ -27,7 +27,7 @@ function loadWords(){
 function buttonClick(){
     var arrWords = window.arrWords;
 
-    var resultsDiv = document.getElementById("results");
+    var resultsDiv = document.getElementById("results-div");
     resultsDiv.innerHTML = "";
     var tbLetters = document.getElementById("tbLetters");
     var tbWordSize = document.getElementById("tbWordSize");
@@ -35,7 +35,7 @@ function buttonClick(){
     arrWords.forEach(element => {
         if(element.length == tbWordSize.value)
             if(wordCanBeMade(element, tbLetters.value))
-                resultsDiv.innerHTML += element+'\n';
+                resultsDiv.innerHTML += element+'<br>';
     });
 
     tbLetters.focus();
